@@ -47,7 +47,7 @@ Asegúrate de tener instalados:
 #### 1. **Clonar el repositorio** (o descargar los archivos)
 
 ```bash
-git clone <tu-repositorio-url>
+git clone https://github.com/BrandoAp/book-verse.git
 cd django/rest
 ```
 
