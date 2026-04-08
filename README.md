@@ -119,6 +119,67 @@ python manage.py flush
 
 ---
 
+## 🐳 **Ejecutar el proyecto con Docker**
+
+Si prefieres no instalar dependencias en tu máquina local, puedes correr la API en un contenedor.
+
+### Requisitos Previos
+
+- **Docker Desktop** instalado y en ejecución.
+
+### 1. Construir la imagen
+
+Desde la raíz del proyecto (`django/rest`):
+
+```bash
+docker build -t bookverse-api .
+```
+
+### 2. Ejecutar el contenedor
+
+```bash
+docker run --name bookverse-container -p 8000:8000 bookverse-api
+```
+
+La API quedará disponible en:
+
+- **API REST:** http://127.0.0.1:8000/api/
+- **Admin:** http://127.0.0.1:8000/admin/
+
+### 3. Ejecutar migraciones (en otra terminal)
+
+```bash
+docker exec -it bookverse-container python manage.py migrate
+```
+
+### 4. Crear superusuario (opcional)
+
+```bash
+docker exec -it bookverse-container python manage.py createsuperuser
+```
+
+### 5. Detener y eliminar el contenedor
+
+```bash
+docker stop bookverse-container
+docker rm bookverse-container
+```
+
+### Comandos útiles con Docker
+
+```bash
+# Ver logs del contenedor
+docker logs -f bookverse-container
+
+# Entrar al contenedor
+docker exec -it bookverse-container bash
+
+# Ejecutar tests dentro del contenedor
+docker exec -it bookverse-container python manage.py test
+```
+
+---
+
 ## �🗂️ **Modelo de Datos**
 
 ### 1️⃣ **Author**
